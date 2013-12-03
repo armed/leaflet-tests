@@ -1,4 +1,6 @@
 node_modules/
-bower_components/
+vendor/
+dist/
 .*
-!.gitignore
+!.git
+!.bowerrc

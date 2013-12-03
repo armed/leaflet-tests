@@ -1,0 +1,57 @@
+!!!
+html(lang='en', ng-app='trelloLite')
+  head
+    meta(charset='utf-8')
+    title Leaflet Tests
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='Trello Lite Client')
+    meta(name='author', content='Artem Medeusheyev <artem.medeusheyev@gmail.com>')
+
+    link(href='/assets/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/assets/css/app.css', rel='stylesheet')
+
+    style.
+      body {
+        padding-top: 60px;
+      }
+
+  body(ng-controller='MainCtrl', ng-cloak)
+    header.navbar.navbar-default.navbar-fixed-top(role='banner')
+      .container
+        .navbar-header
+          button.navbar-toggle(data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#') Trello Lite
+        .collapse.navbar-collapse(role='navigation')
+          ul.nav.navbar-nav
+            li.active
+              a(href='#') Issues
+          .version-checker
+          ul.nav.navbar-nav.navbar-right
+            li
+              p.navbar-text(id='user-login')= user
+            li
+              a(href='#', ng-click='logout()') Exit
+
+
+    .container
+      .row
+        .col-md-3
+          span(ng-show='!products.length') Loading products...
+          ul.side-nav.nav.nav-pills.nav-stacked(ng-show='products.length > 0')
+            li(ng-repeat='product in products',
+              ng-class='{ active: isSelected(product.id) }')
+              a(href='/products/{{product.id}}/issues') {{product.name}}
+        .col-md-9(ng-view)
+
+    .notifications.top-right
+
+  script(src='/assets/js/vendor.min.js?v=#{version}')
+
+  if dev
+    script(src='/assets/js/app.js?v=#{version}')
+  else
+    script(src='/assets/js/app.min.js?v=#{version}')

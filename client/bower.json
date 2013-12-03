@@ -1,6 +1,6 @@
 {
-  "name": "leaflet-tests",
-  "version": "0.0.0",
+  "name": "leaflet-test",
+  "version": "0.0.1",
   "authors": [
     "Artem Medeusheyev <artem.medeu@gmail.com>"
   ],
@@ -9,11 +9,12 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
+    "vendor",
     "test",
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.3"
+    "angular": "~1.2.0",
+    "bootstrap": "~3.0.0"
   }
 }
